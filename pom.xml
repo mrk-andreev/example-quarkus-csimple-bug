@@ -23,6 +23,13 @@
   </properties>
   <dependencyManagement>
     <dependencies>
+<!--      <dependency>-->
+<!--        <groupId>org.apache.camel.quarkus</groupId>-->
+<!--        <artifactId>camel-quarkus-bom</artifactId>-->
+<!--        <version>${quarkus.camel.version}</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
       <dependency>
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>${quarkus.platform.artifact-id}</artifactId>

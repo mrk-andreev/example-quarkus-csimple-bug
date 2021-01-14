@@ -1,4 +1,4 @@
-# How to reproduce
+# Problem
 
 Input:
 ```bash
@@ -48,4 +48,31 @@ Output:
 [ERROR] For more information about the errors and possible solutions, please read the following articles:
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
 The command '/bin/sh -c mvn package -DskipTests' returned a non-zero code: 1
+```
+
+# Solution
+
+By [https://github.com/jamesnetherton](@jamesnetherton)
+
+```
+Try importing camel-quarkus-bom before the quarkus-platform-bom in dependencyManagement like:
+
+ <dependencyManagement>
+    <dependencies>
+      <dependency>
+          <groupId>org.apache.camel.quarkus</groupId>
+          <artifactId>camel-quarkus-bom</artifactId>
+          <version>${quarkus.camel.version}</version>
+          <type>pom</type>
+          <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>${quarkus.platform.group-id}</groupId>
+        <artifactId>${quarkus.platform.artifact-id}</artifactId>
+        <version>${quarkus.platform.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 ```
